@@ -30,7 +30,7 @@ get "/news" do
     for day in forecast["daily"]["data"]
     puts "A high temperature of #{day["temperatureHigh"]} and #{day["summary"]}"
     end
-    
+
     daily_high = day["temperatureHigh"]
     @daily_high = daily_high
 
@@ -39,5 +39,8 @@ get "/news" do
 
 
     
+    url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=9843a780e9e94bb2ae6dd57108ad5456"
+    news = HTTParty.get(params["q"]).parsed_response.to_hash
+
 view "news"
 end
